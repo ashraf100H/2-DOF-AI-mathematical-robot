@@ -1,0 +1,74 @@
+{
+  "dataset": "data/robot_ik_training.csv",
+  "dataset_sha256": "945b7d0bbc15d2c0970778609d7e9c14e2dda33f9edb4adb0de183433d1499cf",
+  "seed": 42,
+  "split_sizes": {
+    "training": 31644,
+    "validation": 3955,
+    "test": 3956
+  },
+  "split_index_base": 0,
+  "features": [
+    "x",
+    "y"
+  ],
+  "feature_units": "cm",
+  "targets": [
+    "theta1",
+    "theta2"
+  ],
+  "target_units": "degrees",
+  "policy": "Prefer positive theta2; retain straight; negative only as valid fallback",
+  "scaling": "Separate StandardScaler for inputs and targets; fit on training rows only",
+  "architecture": [
+    2,
+    64,
+    64,
+    2
+  ],
+  "hidden_activation": "relu",
+  "output_activation": "linear",
+  "trainable_parameters": 4482,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "loss": "scaled MSE",
+  "metric": "scaled MAE",
+  "batch_size": 128,
+  "max_epochs": 250,
+  "patience": 20,
+  "epochs_trained": 207,
+  "best_epoch": 187,
+  "best_validation_loss": 0.004403939936310053,
+  "last_epoch_training_loss": 0.007682639639824629,
+  "last_epoch_training_mae": 0.03101613186299801,
+  "last_epoch_validation_mae": 0.026982158422470093,
+  "restored_validation_loss": 0.00440394040197134,
+  "restored_validation_mae_scaled": 0.028333451598882675,
+  "validation_theta1_mae_degrees": 1.7447294722543147,
+  "validation_theta2_mae_degrees": 2.1763020376188567,
+  "validation_overall_mae_degrees": 1.9605157549365857,
+  "training_seconds": 76.67475150000018,
+  "python": "3.11.5",
+  "versions": {
+    "tensorflow": "2.16.1",
+    "keras": "3.3.3",
+    "numpy": "1.24.3",
+    "pandas": "2.0.3",
+    "scikit-learn": "1.3.0",
+    "matplotlib": "3.7.2",
+    "joblib": "1.2.0",
+    "protobuf": "4.25.8"
+  },
+  "deterministic_ops": true,
+  "oneDNN_enabled": false,
+  "tensorflow_devices": [
+    {
+      "name": "/physical_device:CPU:0",
+      "type": "CPU"
+    }
+  ],
+  "tensorflow_intra_op_threads": 2,
+  "tensorflow_inter_op_threads": 2,
+  "test_model_evaluation_performed": false,
+  "cartesian_validation_performed": false
+}
