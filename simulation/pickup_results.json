@@ -1,0 +1,112 @@
+{
+  "first_attempt": {
+    "status": "lift_rejected",
+    "success": false,
+    "box_target_cm": [
+      12.0,
+      8.0
+    ],
+    "desired_box_final_cm": [
+      12.0,
+      10.0
+    ],
+    "final_box_cm": [
+      12.0,
+      8.0
+    ],
+    "approach_error_cm": 0.483185956503058,
+    "final_box_error_cm": 2.0,
+    "grasp_tolerance_cm": 0.5,
+    "requested_lift_cm": 2.0,
+    "actual_lift_cm": 0.0,
+    "attached": true,
+    "message": "The predicted lift does not meet the box-position tolerance or raise the box; holding the grasp pose.",
+    "attachment_offset_cm": [
+      -0.32460684169999965,
+      0.3579092998000002
+    ],
+    "lift_target_cm": [
+      12.3246068417,
+      9.6420907002
+    ],
+    "lift_prediction_box_error_cm": 0.6217266716879176
+  },
+  "reference_demo": {
+    "status": "success",
+    "success": true,
+    "box_target_cm": [
+      10.0,
+      10.0
+    ],
+    "desired_box_final_cm": [
+      10.0,
+      12.0
+    ],
+    "final_box_cm": [
+      10.0966720781,
+      11.863227331200001
+    ],
+    "approach_error_cm": 0.14809698774937322,
+    "final_box_error_cm": 0.16748807006723368,
+    "grasp_tolerance_cm": 0.5,
+    "requested_lift_cm": 2.0,
+    "actual_lift_cm": 1.863227331200001,
+    "attached": true,
+    "message": "The box attached without snapping and reached the lift tolerance.",
+    "attachment_offset_cm": [
+      0.11937703879999972,
+      -0.08764610879999957
+    ],
+    "lift_target_cm": [
+      9.8806229612,
+      12.0876461088
+    ],
+    "lift_prediction_box_error_cm": 0.16748807006723368
+  },
+  "known_failure_demo": {
+    "status": "pickup_missed",
+    "success": false,
+    "box_target_cm": [
+      -8.2635182233,
+      -9.8480775301
+    ],
+    "desired_box_final_cm": [
+      -8.2635182233,
+      -7.848077530099999
+    ],
+    "final_box_cm": [
+      -8.2635182233,
+      -9.8480775301
+    ],
+    "approach_error_cm": 32.76408583654814,
+    "final_box_error_cm": 2.0,
+    "grasp_tolerance_cm": 0.5,
+    "requested_lift_cm": 2.0,
+    "actual_lift_cm": 0.0,
+    "attached": false,
+    "message": "The hand missed the grasp tolerance; the box stayed put.",
+    "attachment_offset_cm": null,
+    "lift_target_cm": null,
+    "lift_prediction_box_error_cm": null
+  },
+  "source_sha256": {
+    "data/robot_configurations.csv": "b41e149a9ad8e5ae996b8e7d659127f1d082c1d775cfc329e941619defb6d5b3",
+    "data/robot_ik_training.csv": "945b7d0bbc15d2c0970778609d7e9c14e2dda33f9edb4adb0de183433d1499cf",
+    "models/ik_ann.keras": "98b5b78a26c3c10447c098f43363973d9694a447d692cb2b5ec8c49a366e4f37",
+    "models/input_scaler.joblib": "7436b687cf879e8ecd7b8bf561b98ff767dcb64a1ac1a13468fc445e83e8e6bc",
+    "models/output_scaler.joblib": "7dc13339bca9ed356829d1c0f8e4cb4365abcaf53d8227e0595e4aa7004c023b",
+    "models/split_indices.npz": "30daeb1bb5f179261163040e26bf923a75df3665b9afdc49444b18aca097a767",
+    "models/training_history.csv": "6f85006549ba063ae1bbfa04f39803620c87659ddc6c41de1466c0e0b68cf9c2",
+    "models/training_metadata.json": "e55747b45f27231cccacd030c413028ddcd332aea36c4c81391878e265fd0040",
+    "evaluation/summary.json": "b0b8fb56bb1bdb6ba94488d450645d4a0c0c23b66f3a4f15d71dab6d4b6de9d2",
+    "evaluation/test_predictions.csv": "cacdf1bf19a157657fbd9c2924c3f80674cf4fc8d8eea614ca237df0077f46cc",
+    "forward_kinematics.ipynb": "b65e8f59477322184e1d0cf76ccab8b991dac6a22da8cc80e0a8c7543f90fffc",
+    "ann_inverse_kinematics.ipynb": "1efc77f4ebdbfc33b2ddf3fcff3438203420291bf7670c784b1054b93a237aba",
+    "ann_ik_validation.ipynb": "67ee9e942cc69adf503ecbfa36e8ed58b00d790c12dfdacd86680e53ac91e398"
+  },
+  "gripper_model": "Ideal point attachment with fixed offset",
+  "motion": "Joint interpolation for visualization only; no collision/trajectory planning",
+  "model_retrained": false,
+  "policy_changed": false,
+  "scene_selection": "First (12,8) fixed before prediction; reference (10,10) added after its lift was rejected; all results retained"
+}

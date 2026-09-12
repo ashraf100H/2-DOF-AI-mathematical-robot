@@ -32,8 +32,8 @@ The notebook's validated `RobotArm2DOF.forward_kinematics()` is the source of tr
 | 3.3 — IK ambiguity resolution + ML dataset | ✅ Complete |
 | 4 — TensorFlow ANN training | ✅ Complete |
 | 5 — ANN inverse-kinematics validation | ✅ Complete |
-| 6 — Simulated box pickup | Next stage, after Step 5 review |
-| 7 — Table + trajectory planning | Planned |
+| 6 — Simulated box pickup | ✅ Complete |
+| 7 — Table + trajectory planning | Next, after Step 6 review |
 | 8 — Gripper / complete 2D pick-and-place | Planned |
 | Later — Physical hardware implementation | Planned |
 
@@ -43,6 +43,9 @@ The notebook's validated `RobotArm2DOF.forward_kinematics()` is the source of tr
 forward_kinematics.ipynb       # Robot model, simulation, data generation, Steps 3.2–3.3
 ann_inverse_kinematics.ipynb   # Step 4: baseline ANN preparation, training, and diagnostics
 ann_ik_validation.ipynb      # Step 5: held-out test evaluation and manual target helpers
+simulated_box_pickup.ipynb   # Step 6: approach, attachment, lift, and honest failure demos
+robot_pipeline.py           # Load frozen ANN and existing notebook definitions
+pickup_simulation.py        # Pickup states and motion frames, separate from drawing
 requirements-ann.txt         # Tested ANN environment (Python 3.11)
 data/
   robot_configurations.csv    # Complete raw configuration-space dataset
@@ -57,6 +60,13 @@ models/
 evaluation/
   test_predictions.csv       # Every test target, prediction, error, and joint-limit flag
   summary.json               # Test metrics, branch-proximity analysis, and source hashes
+simulation/
+  box_pickup.gif             # Successful reference pickup-and-lift animation
+  first_attempt.gif          # First scene: attached, then lift rejected
+  pickup_results.json        # All three scene outcomes and baseline hashes
+  *.png                      # Static snapshots of pickup and failed pickup
+tests/
+  test_pickup_simulation.py  # State transitions checked with the original robot model
 ```
 
 - **Raw dataset:** 65,311 rows, columns `theta1, theta2, x, y`. Preserve this ground-truth dataset for analysis and future configuration policies.
@@ -92,7 +102,19 @@ The frozen baseline was evaluated on all **3,956 reserved test targets**, after 
 
 Most predictions are close, but large misses cluster near the lower-left branch transition. Mean error is **2.077 cm** for 176 test targets within 1 cm of an opposite-branch sample, versus **0.420 cm** for 3,746 farther targets; 34 straight targets are excluded only from this proximity analysis. This is a sampled association, not an exact boundary-distance measure or proof of cause. The worst target **(-8.264, -9.848) cm** misses by **32.764 cm**, even though its predicted angles satisfy the limits.
 
-There are **56 joint-limit violations**. The geometric rates above retain all predictions; requiring both joint-limit validity and error ≤1 cm gives **94.54%**. No clipping, retraining, policy redesign, or box-pickup work was performed. Review these failures before choosing the next action. `models/training_metadata.json` remains the historical Step 4 record; Step 5 metrics live in `evaluation/summary.json`.
+There are **56 joint-limit violations**. The geometric rates above retain all predictions; requiring both joint-limit validity and error ≤1 cm gives **94.54%**. Step 5 did not clip, retrain, or redesign the policy. `models/training_metadata.json` remains the historical Step 4 record; Step 5 metrics live in `evaluation/summary.json`.
+
+## Step 6 simulated pickup
+
+The frozen ANN now drives a simple point-gripper simulation: approach the box center, attach only within **0.5 cm**, and request a **2 cm lift**. Predicted angles are checked against joint limits before motion. Attachment preserves the existing hand-to-box offset, and lift success depends on the actual final box position. Rejected lifts hold the last accepted attached pose; missed pickups leave the box untouched.
+
+| Scene | Result |
+|---|---|
+| First target (12, 8) cm | Attached at 0.483 cm error; lift rejected because its predicted box error was 0.622 cm |
+| Reference target (10, 10) cm | Pickup and lift succeeded: 0.148 cm approach error, 1.863 cm actual rise, 0.167 cm final box error |
+| Known worst Step 5 target | 32.764 cm approach miss; box never attached or moved |
+
+The first scene was chosen before prediction. The reference scene was added after the rejected lift, with all settings unchanged; all outcomes are retained. These are demonstrations, not an unbiased success-rate measurement. The simulation uses joint interpolation and ideal attachment without box rotation, forces, collision checking, a table, or finger mechanics. It stops with the box attached; planning and complete pick-and-place remain later stages. The ANN, datasets, IK policy, and previous notebooks/reports are unchanged.
 
 ## Running the notebook
 
@@ -104,4 +126,6 @@ For ANN work, use a dedicated Python 3.11 environment, install `requirements-ann
 
 Open `ann_ik_validation.ipynb` to reproduce the evaluation without retraining. It includes error distributions, workspace comparisons, worst cases, branch-proximity analysis, and `predict_angles(x, y)` / `evaluate_target(x, y)` helpers for targets in cm. The notebook reads all existing inputs and writes only the `evaluation/` reports.
 
-**Review Step 5 results before proceeding to simulated box pickup or changing the baseline.**
+Open `simulated_box_pickup.ipynb` for Step 6; its setup reuses the original robot class and Step 5 prediction helper without running their notebooks. Change the scene constants to try a target and inspect its actual result. Saved GIFs and PNGs in `simulation/` can be viewed without TensorFlow. Run state-transition checks from the repository root with `python -m unittest discover -s tests -v`.
+
+**Review Step 6 before continuing to table and trajectory planning.**
