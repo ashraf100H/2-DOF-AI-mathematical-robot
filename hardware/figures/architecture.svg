@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="648pt" viewBox="0 0 1152 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-12T14:01:31.434940</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.7.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648
+L 1152 648
+L 1152 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 56.2176 318.4452
+L 342.3744 318.4452
+Q 350.6688 318.4452 350.6688 310.1076
+L 350.6688 126.6804
+Q 350.6688 118.3428 342.3744 118.3428
+L 56.2176 118.3428
+Q 47.9232 118.3428 47.9232 126.6804
+L 47.9232 310.1076
+Q 47.9232 318.4452 56.2176 318.4452
+z
+" clip-path="url(#pd5db86157c)" style="fill: #eef5fc; stroke: #2366b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 443.2896 318.4452
+L 684.5184 318.4452
+Q 692.8128 318.4452 692.8128 310.1076
+L 692.8128 126.6804
+Q 692.8128 118.3428 684.5184 118.3428
+L 443.2896 118.3428
+Q 434.9952 118.3428 434.9952 126.6804
+L 434.9952 310.1076
+Q 434.9952 318.4452 443.2896 318.4452
+z
+" clip-path="url(#pd5db86157c)" style="fill: #eef5fc; stroke: #2366b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 795.8016 318.4452
+L 1095.7824 318.4452
+Q 1104.0768 318.4452 1104.0768 310.1076
+L 1104.0768 126.6804
+Q 1104.0768 118.3428 1095.7824 118.3428
+L 795.8016 118.3428
+Q 787.5072 118.3428 787.5072 126.6804
+L 787.5072 310.1076
+Q 787.5072 318.4452 795.8016 318.4452
+z
+" clip-path="url(#pd5db86157c)" style="fill: #edf8f5; stroke: #168070; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 56.2176 549.8136
+L 342.3744 549.8136
+Q 350.6688 549.8136 350.6688 541.476
+L 350.6688 433.0872
+Q 350.6688 424.7496 342.3744 424.7496
+L 56.2176 424.7496
+Q 47.9232 424.7496 47.9232 433.0872
+L 47.9232 541.476
+Q 47.9232 549.8136 56.2176 549.8136
+z
+" clip-path="url(#pd5db86157c)" style="fill: #eef5fc; stroke: #2366b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 702.4896 549.8136
+L 1095.7824 549.8136
+Q 1104.0768 549.8136 1104.0768 541.476
+L 1104.0768 433.0872
+Q 1104.0768 424.7496 1095.7824 424.7496
+L 702.4896 424.7496
+Q 694.1952 424.7496 694.1952 433.0872
+L 694.1952 541.476
+Q 694.1952 549.8136 702.4896 549.8136
+z
+" clip-path="url(#pd5db86157c)" style="fill: #fff2ee; stroke: #c23f37; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 352.0512 487.9764
+L 482.688 487.9764
+L 482.688 319.8348
+" clip-path="url(#pd5db86157c)" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 692.8128 489.366
+L 589.824 489.366
+L 589.824 319.8348
+" clip-path="url(#pd5db86157c)" style="fill: none; stroke: #536575; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="fill: #183044; font: 700 23px 'DejaVu Sans'; text-anchor: start" x="50.688" y="39.8304" transform="rotate(-0 50.688 39.8304)">From a target on the PC to two physical joints</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #536575; font: 12.5px 'DejaVu Sans'; text-anchor: start" x="50.688" y="70.4016" transform="rotate(-0 50.688 70.4016)">FIRST BUILD  •  Horizontal 2-DOF reaching  •  No gripper  •  No ANN on the microcontroller</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #2366b1; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="199.296" y="153.363656" transform="rotate(-0 199.296 153.363656)">EXISTING LAPTOP</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(149.268656 212.419441)">Enter X, Y in cm</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(111.706156 228.791219)">Saved scalers + frozen ANN</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(95.193461 245.162996)">Check limits and original FK error</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #2366b1; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="563.904" y="153.363656" transform="rotate(-0 563.904 153.363656)">ARDUINO UNO R3</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(498.368844 212.419441)">Receive robot angles</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(476.753609 228.791219)">Calibrated pulse conversion</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(460.465523 245.162996)">Smooth joint motion + watchdog</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #168070; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="945.792" y="153.363656" transform="rotate(-0 945.792 153.363656)">TWO DS3218 SERVOS</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(871.110359 212.419441)">270° positional variants</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(890.26368 228.791219)">Shoulder + elbow</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(858.13282 245.162996)">Two 100 mm links + pointer</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 355.596663 211.446
+Q 392.485014 211.446 429.373366 211.446
+" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 361.596663 214.446
+L 355.596663 211.446
+L 361.596663 208.446
+" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 423.373366 208.446
+L 429.373366 211.446
+L 423.373366 214.446
+" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="fill: #2366b1; font: 700 13px 'DejaVu Sans'; text-anchor: middle" x="390.7584" y="183.654" transform="rotate(-0 390.7584 183.654)">USB</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #536575; font: 11px 'DejaVu Sans'; text-anchor: middle" x="390.7584" y="245.4912" transform="rotate(-0 390.7584 245.4912)">serial</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 695.504299 211.446
+Q 739.468607 211.446 781.196847 211.446
+" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 775.196847 208.446
+L 781.196847 211.446
+L 775.196847 214.446
+z
+" style="fill: #2366b1; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="fill: #2366b1; font: 700 12px 'DejaVu Sans'; text-anchor: middle" x="739.8144" y="183.654" transform="rotate(-0 739.8144 183.654)">D9 / D10</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #536575; font: 11px 'DejaVu Sans'; text-anchor: middle" x="739.8144" y="245.4912" transform="rotate(-0 739.8144 245.4912)">pulses</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #2366b1; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="199.296" y="459.770456" transform="rotate(-0 199.296 459.770456)">OPTIONAL CONTROLS</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(128.638773 489.49293)">16×2 I2C LCD: A4 / A5</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(126.063578 505.864707)">Stop button: D2 → GND</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #2366b1; font: 11px 'DejaVu Sans'" transform="translate(497.958281 442.200181) rotate(-90)">status / stop</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #c23f37; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="899.136" y="459.770456" transform="rotate(-0 899.136 459.770456)">EXTERNAL MOTOR POWER</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(823.836195 489.49293)">GST60A05-P1J: 5 V / 6 A</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(760.081313 505.864707)">Inline 5 A fuse + reachable DC power switch</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 945.792 422.054239
+Q 945.792 371.944316 945.792 324.070461
+" style="fill: none; stroke: #c23f37; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 942.792 330.070461
+L 945.792 324.070461
+L 948.792 330.070461
+z
+" style="fill: #c23f37; stroke: #c23f37; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_18">
+    <text style="fill: #c23f37; font: 12px 'DejaVu Sans'; text-anchor: start" x="960.9984" y="378.8928" transform="rotate(-0 960.9984 378.8928)">+5 V to motors</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #536575; font: 11px 'DejaVu Sans'" transform="translate(606.476681 437.356375) rotate(-90)">common GND</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #183044; font: 12px 'DejaVu Sans'; text-anchor: start" x="54.144" y="597.06" transform="rotate(-0 54.144 597.06)">USB powers Uno logic. External +5 V never joins Uno 5V/Vin. DONE reports a command, not measured position.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd5db86157c">
+   <rect x="23.04" y="6.48" width="1105.92" height="625.32"/>
+  </clipPath>
+ </defs>
+</svg>

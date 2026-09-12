@@ -1,5 +1,7 @@
 # 2-DOF AI Mathematical Robot
 
+**2D project checkpoint closed — 12 September 2026.** Steps 1–7 are complete, with a physical 2-DOF build guide and starter control code delivered. Hardware has not been built or validated. Full 2D pick-and-place is deferred; a separate `AI-3D-robotic-arm` project may follow later and has not been started.
+
 ## Project overview
 
 This project develops a two-link planar robotic arm from mathematical modeling and simulation toward an intelligent physical robot. The goal is a complete manipulation pipeline that can determine a valid robot configuration, reach a target, plan a movement, grasp an object, and place it at a target location.
@@ -34,8 +36,14 @@ The notebook's validated `RobotArm2DOF.forward_kinematics()` is the source of tr
 | 5 — ANN inverse-kinematics validation | ✅ Complete |
 | 6 — Simulated box pickup | ✅ Complete |
 | 7 — Interactive ANN simulator + table + trajectory planning | ✅ Complete |
-| 8 — Gripper / complete 2D pick-and-place | NEXT, after Step 7 review |
-| Later — Physical hardware implementation | Planned |
+| 8 — Gripper / complete 2D pick-and-place | Deferred outside the closed 2D scope |
+| Physical 2-DOF hardware | Guide + starter code complete; physical build not started |
+
+## Physical 2-DOF hardware guide
+
+Read [hardware_2d_robot_plan.md](hardware_2d_robot_plan.md) for the BOM, motor/controller comparisons, three build diagrams, assembly, wiring, calibration and first-test procedure. The recommended arm uses **two DS3218 270° positional servos, Uno R3, an external 5 V / 6 A supply, two lightweight 100 mm links, a plywood base and a pointer**. The existing laptop runs the saved ANN and sends checked angles over USB; the Uno generates calibrated, smooth servo commands. A 16×2 I2C LCD is optional. No gripper or box is needed.
+
+The starter firmware ships **disarmed and calibration-locked**. Review the guide before building, and complete the [calibration checklist](hardware/calibration_checklist.md) before enabling motion. [Validation notes](hardware/validation_notes.md) record 33 passing Python tests, offline frozen-ANN inference and Uno compilation; these do not establish physical accuracy or safe mechanical travel. The trained ANN, datasets, validated FK and existing simulation remain unchanged.
 
 ## Project structure and datasets
 
@@ -50,6 +58,10 @@ interactive_robot_sim.py    # Step 7: Pygame input, dashboard, rendering and liv
 trajectory_planner.py       # Step 7: workspace checks, collision checks and waypoint planning
 requirements-ann.txt         # Tested ANN environment (Python 3.11)
 requirements-sim.txt        # Existing ANN dependencies + Pygame 2.6.1
+requirements-hardware.txt   # Existing ANN dependencies + pySerial 3.5
+hardware_2d_robot_plan.md   # Practical build guide; hardware is not yet built
+hardware/                  # Python serial bridge, wiring, calibration, figures and checks
+arduino/                   # Calibration-locked controller and loose-servo neutral test
 data/
   robot_configurations.csv    # Complete raw configuration-space dataset
   robot_ik_training.csv       # Deterministic IK samples for future ANN training
@@ -224,4 +236,4 @@ python tests/check_frozen_planner.py
 
 The optional integration command uses the **real frozen ANN** for seven planning cases and reproduces all three original Step 6 outcomes. It checks 2,001 poses per accepted example, verifies input hashes and writes `simulation/step7_checks.json`. A development smoke run also exercised typed/mouse/box controls, invalid inputs, resets during planning/motion, and matching motion states at 30/60/120 Hz render cadences using SDL's headless video driver. Saved Pygame frames were visually inspected; perceived smoothness on your display still needs your review.
 
-**Review the interactive Step 7 simulator before starting Step 8 — gripper and complete 2D pick-and-place.**
+**The 2D project is closed at Step 7 plus the hardware-guide milestone. Review the hardware plan before any physical build; further software development and the separate 3D arm remain future work.**

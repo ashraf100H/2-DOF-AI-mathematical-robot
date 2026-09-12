@@ -1,0 +1,3 @@
+# PC inference stays in the existing tested Python 3.11 environment.
+-r requirements-ann.txt
+pyserial==3.5

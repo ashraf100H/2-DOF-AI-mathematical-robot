@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1224pt" height="792pt" viewBox="0 0 1224 792" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-12T14:01:31.799171</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.7.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 792
+L 1224 792
+L 1224 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 57.6576 267.7752
+L 278.1504 267.7752
+Q 286.4448 267.7752 286.4448 259.4376
+L 286.4448 117.6984
+Q 286.4448 109.3608 278.1504 109.3608
+L 57.6576 109.3608
+Q 49.3632 109.3608 49.3632 117.6984
+L 49.3632 259.4376
+Q 49.3632 267.7752 57.6576 267.7752
+z
+" clip-path="url(#pd9bde46b8d)" style="fill: #eef5fc; stroke: #2366b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 347.9616 410.2092
+L 596.1024 410.2092
+Q 604.3968 410.2092 604.3968 401.8716
+L 604.3968 117.6984
+Q 604.3968 109.3608 596.1024 109.3608
+L 347.9616 109.3608
+Q 339.6672 109.3608 339.6672 117.6984
+L 339.6672 401.8716
+Q 339.6672 410.2092 347.9616 410.2092
+z
+" clip-path="url(#pd9bde46b8d)" style="fill: #eef5fc; stroke: #2366b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 904.3776 274.7232
+L 1159.4304 274.7232
+Q 1167.7248 274.7232 1167.7248 266.3856
+L 1167.7248 124.6464
+Q 1167.7248 116.3088 1159.4304 116.3088
+L 904.3776 116.3088
+Q 896.0832 116.3088 896.0832 124.6464
+L 896.0832 266.3856
+Q 896.0832 274.7232 904.3776 274.7232
+z
+" clip-path="url(#pd9bde46b8d)" style="fill: #edf8f5; stroke: #168070; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 904.3776 472.7412
+L 1159.4304 472.7412
+Q 1167.7248 472.7412 1167.7248 464.4036
+L 1167.7248 322.6644
+Q 1167.7248 314.3268 1159.4304 314.3268
+L 904.3776 314.3268
+Q 896.0832 314.3268 896.0832 322.6644
+L 896.0832 464.4036
+Q 896.0832 472.7412 904.3776 472.7412
+z
+" clip-path="url(#pd9bde46b8d)" style="fill: #edf8f5; stroke: #168070; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 57.6576 653.3892
+L 278.1504 653.3892
+Q 286.4448 653.3892 286.4448 645.0516
+L 286.4448 506.7864
+Q 286.4448 498.4488 278.1504 498.4488
+L 57.6576 498.4488
+Q 49.3632 498.4488 49.3632 506.7864
+L 49.3632 645.0516
+Q 49.3632 653.3892 57.6576 653.3892
+z
+" clip-path="url(#pd9bde46b8d)" style="fill: #fff2ee; stroke: #c23f37; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 339.6672 568.6236
+L 447.4944 568.6236
+Q 455.7888 568.6236 455.7888 560.286
+L 455.7888 516.5136
+Q 455.7888 508.176 447.4944 508.176
+L 339.6672 508.176
+Q 331.3728 508.176 331.3728 516.5136
+L 331.3728 560.286
+Q 331.3728 568.6236 339.6672 568.6236
+z
+" clip-path="url(#pd9bde46b8d)" style="fill: #fff2ee; stroke: #c23f37; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 509.7024 568.6236
+L 640.3392 568.6236
+Q 648.6336 568.6236 648.6336 560.286
+L 648.6336 516.5136
+Q 648.6336 508.176 640.3392 508.176
+L 509.7024 508.176
+Q 501.408 508.176 501.408 516.5136
+L 501.408 560.286
+Q 501.408 568.6236 509.7024 568.6236
+z
+" clip-path="url(#pd9bde46b8d)" style="fill: #fff2ee; stroke: #c23f37; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 57.6576 462.3192
+L 278.1504 462.3192
+Q 286.4448 462.3192 286.4448 453.9816
+L 286.4448 314.3268
+Q 286.4448 305.9892 278.1504 305.9892
+L 57.6576 305.9892
+Q 49.3632 305.9892 49.3632 314.3268
+L 49.3632 453.9816
+Q 49.3632 462.3192 57.6576 462.3192
+z
+" clip-path="url(#pd9bde46b8d)" style="fill: #eef5fc; stroke: #2366b1; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <defs>
+     <path id="mf5141a0b97" d="M 0 2.5
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767
+C 2.236584 1.29895 2.5 0.663008 2.5 0
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767
+C -1.29895 2.236584 -0.663008 2.5 0 2.5
+z
+" style="stroke: #2366b1"/>
+    </defs>
+    <g clip-path="url(#pd9bde46b8d)">
+     <use xlink:href="#mf5141a0b97" x="601.632" y="212.886" style="fill: #2366b1; stroke: #2366b1"/>
+    </g>
+   </g>
+   <g id="line2d_2">
+    <g clip-path="url(#pd9bde46b8d)">
+     <use xlink:href="#mf5141a0b97" x="601.632" y="258.048" style="fill: #2366b1; stroke: #2366b1"/>
+    </g>
+   </g>
+   <g id="line2d_3">
+    <defs>
+     <path id="m64fefeb39f" d="M 0 2.5
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767
+C 2.236584 1.29895 2.5 0.663008 2.5 0
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767
+C -1.29895 2.236584 -0.663008 2.5 0 2.5
+z
+" style="stroke: #536575"/>
+    </defs>
+    <g clip-path="url(#pd9bde46b8d)">
+     <use xlink:href="#m64fefeb39f" x="601.632" y="376.164" style="fill: #536575; stroke: #536575"/>
+    </g>
+   </g>
+   <g id="line2d_4">
+    <path d="M 601.632 212.886
+L 898.848 212.886
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 601.632 258.048
+L 726.048 258.048
+L 726.048 410.904
+L 898.848 410.904
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 283.68 538.7472
+L 330.6816 538.7472
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #c23f37; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 455.7888 538.7472
+L 501.408 538.7472
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #c23f37; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 648.6336 538.7472
+L 1037.088 538.7472
+L 1037.088 472.7412
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #c23f37; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 1037.088 274.7232
+L 1037.088 293.4828
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #c23f37; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_10">
+    <defs>
+     <path id="m64c4cc3761" d="M 0 2.5
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767
+C 2.236584 1.29895 2.5 0.663008 2.5 0
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767
+C -1.29895 2.236584 -0.663008 2.5 0 2.5
+z
+" style="stroke: #c23f37"/>
+    </defs>
+    <g clip-path="url(#pd9bde46b8d)">
+     <use xlink:href="#m64c4cc3761" x="1037.088" y="538.7472" style="fill: #c23f37; stroke: #c23f37"/>
+    </g>
+   </g>
+   <g id="line2d_11">
+    <path d="M 283.68 617.9544
+L 681.12 617.9544
+L 1113.8112 617.9544
+L 1113.8112 472.7412
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #536575; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 1113.8112 274.7232
+L 1113.8112 294.1776
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #536575; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 601.632 376.164
+L 681.12 376.164
+L 681.12 527.6304
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #536575; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 681.12 549.864
+L 681.12 617.9544
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #536575; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_15">
+    <g clip-path="url(#pd9bde46b8d)">
+     <use xlink:href="#m64fefeb39f" x="681.12" y="617.9544" style="fill: #536575; stroke: #536575"/>
+    </g>
+   </g>
+   <g id="line2d_16">
+    <path d="M 784.8 538.7472
+L 784.8 565.1496
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #c23f37; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 767.52 565.1496
+L 802.08 565.1496
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #c23f37; stroke-width: 3; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 767.52 578.3508
+L 802.08 578.3508
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #536575; stroke-width: 3; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 784.8 578.3508
+L 784.8 617.9544
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #536575; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_20">
+    <g clip-path="url(#pd9bde46b8d)">
+     <use xlink:href="#m64c4cc3761" x="784.8" y="538.7472" style="fill: #c23f37; stroke: #c23f37"/>
+    </g>
+   </g>
+   <g id="line2d_21">
+    <g clip-path="url(#pd9bde46b8d)">
+     <use xlink:href="#m64fefeb39f" x="784.8" y="617.9544" style="fill: #536575; stroke: #536575"/>
+    </g>
+   </g>
+   <g id="text_1">
+    <text style="fill: #183044; font: 700 23px 'DejaVu Sans'; text-anchor: start" x="52.128" y="41.2704" transform="rotate(-0 52.128 41.2704)">Wire logic and motor power as separate supplies</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #536575; font: 12.5px 'DejaVu Sans'; text-anchor: start" x="52.128" y="71.8416" transform="rotate(-0 52.128 71.8416)">UNO R3 PIN MAP  •  DS3218 positional servos at 5 V  •  Disconnect USB and the adapter before wiring</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #2366b1; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="167.904" y="144.381656" transform="rotate(-0 167.904 144.381656)">PC / LAPTOP</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(120.206734 190.77933)">USB data cable</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(114.722359 207.151107)">Powers Uno logic</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #2366b1; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="472.032" y="144.381656" transform="rotate(-0 472.032 144.381656)">ARDUINO UNO R3</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 291.37319 181.62
+Q 312.710549 181.62 334.047908 181.62
+" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 297.37319 184.62
+L 291.37319 181.62
+L 297.37319 178.62
+" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 328.047908 178.62
+L 334.047908 181.62
+L 328.047908 184.62
+" style="fill: none; stroke: #2366b1; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="fill: #2366b1; font: 700 13px 'DejaVu Sans'; text-anchor: end" x="580.896" y="216.473187" transform="rotate(-0 580.896 216.473187)">D9</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #2366b1; font: 700 13px 'DejaVu Sans'; text-anchor: end" x="580.896" y="261.635187" transform="rotate(-0 580.896 261.635187)">D10</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #536575; font: 700 13px 'DejaVu Sans'; text-anchor: end" x="580.896" y="379.751187" transform="rotate(-0 580.896 379.751187)">GND</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #183044; font: 11px 'DejaVu Sans'" transform="translate(408.525512 308.262406)">USB-powered 5 V logic</text>
+    <text style="fill: #183044; font: 11px 'DejaVu Sans'" transform="translate(386.779887 320.58)">External + must stay separate</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #168070; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="1031.904" y="151.329656" transform="rotate(-0 1031.904 151.329656)">SHOULDER SERVO</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #168070; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="1031.904" y="349.347656" transform="rotate(-0 1031.904 349.347656)">ELBOW SERVO</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #183044; font: 12px 'DejaVu Sans'; text-anchor: middle" x="1031.904" y="184.3992" transform="rotate(-0 1031.904 184.3992)">DS3218 270° positional</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #2366b1; font: 12px 'DejaVu Sans'; text-anchor: start" x="913.3632" y="216.19725" transform="rotate(-0 913.3632 216.19725)">Signal</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #c23f37; font: 13px 'DejaVu Sans'; text-anchor: middle" x="1037.088" y="259.4376" transform="rotate(-0 1037.088 259.4376)">+</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #536575; font: 11px 'DejaVu Sans'; text-anchor: middle" x="1113.8112" y="259.4376" transform="rotate(-0 1113.8112 259.4376)">GND</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #183044; font: 12px 'DejaVu Sans'; text-anchor: middle" x="1031.904" y="382.4172" transform="rotate(-0 1031.904 382.4172)">DS3218 270° positional</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #2366b1; font: 12px 'DejaVu Sans'; text-anchor: start" x="913.3632" y="414.21525" transform="rotate(-0 913.3632 414.21525)">Signal</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #c23f37; font: 13px 'DejaVu Sans'; text-anchor: middle" x="1037.088" y="457.4556" transform="rotate(-0 1037.088 457.4556)">+</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #536575; font: 11px 'DejaVu Sans'; text-anchor: middle" x="1113.8112" y="457.4556" transform="rotate(-0 1113.8112 457.4556)">GND</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #2366b1; font: 11px 'DejaVu Sans'; text-anchor: start" x="739.872" y="199.6848" transform="rotate(-0 739.872 199.6848)">shoulder signal</text>
+   </g>
+   <g id="text_21">
+    <text style="fill: #2366b1; font: 11px 'DejaVu Sans'; text-anchor: start" x="743.328" y="397.7028" transform="rotate(-0 743.328 397.7028)">elbow signal</text>
+   </g>
+   <g id="text_22">
+    <text style="fill: #c23f37; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="167.904" y="533.469656" transform="rotate(-0 167.904 533.469656)">EXTERNAL ADAPTER</text>
+   </g>
+   <g id="text_23">
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(123.25068 578.13033)">GST60A05-P1J</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(130.186227 594.502107)">5 V / 6 A DC</text>
+   </g>
+   <g id="text_24">
+    <text style="fill: #536575; font: 10.5px 'DejaVu Sans'; text-anchor: start" x="57.6576" y="679.7916" transform="rotate(-0 57.6576 679.7916)">Enclosed supply; verify polarity</text>
+   </g>
+   <g id="text_25">
+    <text style="fill: #c23f37; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="393.5808" y="543.196856" transform="rotate(-0 393.5808 543.196856)">5 A FUSE</text>
+   </g>
+   <g id="text_26">
+    <text style="fill: #c23f37; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="575.0208" y="543.196856" transform="rotate(-0 575.0208 543.196856)">DC SWITCH</text>
+   </g>
+   <g id="text_27">
+    <text style="fill: #c23f37; font: 700 11.5px 'DejaVu Sans'; text-anchor: middle" x="819.36" y="519.2928" transform="rotate(-0 819.36 519.2928)">FUSED / SWITCHED +5 V</text>
+   </g>
+   <g id="text_28">
+    <text style="fill: #c23f37; font: 700 10px 'DejaVu Sans'; text-anchor: middle" x="1033.632" y="308.0736" transform="rotate(-0 1033.632 308.0736)">MOTOR +5 V</text>
+   </g>
+   <g id="text_29">
+    <text style="fill: #536575; font: 700 10px 'DejaVu Sans'; text-anchor: middle" x="1130.4" y="308.0736" transform="rotate(-0 1130.4 308.0736)">GND</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 681.12 527.6304
+C 678.188043 527.6304 675.373172 528.80243 673.299965 530.886435
+C 671.226758 532.97044 670.0608 535.799972 670.0608 538.7472
+C 670.0608 541.694428 671.226758 544.52396 673.299965 546.607965
+C 675.373172 548.69197 678.188043 549.864 681.12 549.864
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #ffffff; stroke-width: 7; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_30">
+    <text style="fill: #536575; font: 10.5px 'DejaVu Sans'; text-anchor: middle" x="895.392" y="638.7984" transform="rotate(-0 895.392 638.7984)">COMMON / STAR GND — motor returns go directly here</text>
+   </g>
+   <g id="text_31">
+    <text style="fill: #536575; font: 10.5px 'DejaVu Sans'; text-anchor: start" x="370.08" y="677.7072" transform="rotate(-0 370.08 677.7072)">Upper servo: MOTOR +5 V and GND labels join the corresponding power rails.</text>
+   </g>
+   <g id="text_32">
+    <text style="fill: #183044; font: 10.5px 'DejaVu Sans'" transform="translate(812.448 574.674492)">1000 µF, ≥10 V</text>
+    <text style="fill: #183044; font: 10.5px 'DejaVu Sans'" transform="translate(812.448 586.432195)">+ toward motor +5 V</text>
+   </g>
+   <g id="text_33">
+    <text style="fill: #c23f37; font: 13px 'DejaVu Sans'; text-anchor: start" x="761.2992" y="554.0328" transform="rotate(-0 761.2992 554.0328)">+</text>
+   </g>
+   <g id="text_34">
+    <text style="fill: #2366b1; font: 700 15px 'DejaVu Sans'; text-anchor: middle" x="167.904" y="341.010056" transform="rotate(-0 167.904 341.010056)">OPTIONAL LCD / STOP</text>
+   </g>
+   <g id="text_35">
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(66.483102 378.179641)">LCD VCC → Uno 5V; GND → GND</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(89.482125 394.551419)">LCD SDA → A4; SCL → A5</text>
+    <text style="fill: #183044; font: 12.5px 'DejaVu Sans'" transform="translate(83.801461 410.923196)">NO stop button: D2 → GND</text>
+   </g>
+   <g id="text_36">
+    <text style="fill: #183044; font: 12px 'DejaVu Sans'; text-anchor: start" x="56.9664" y="718.7004" transform="rotate(-0 56.9664 718.7004)">SIGNAL: blue     MOTOR +5 V: red     GND: gray     • dots = joins; crossing without a dot = no join</text>
+   </g>
+   <g id="text_37">
+    <text style="fill: #c23f37; font: 12px 'DejaVu Sans'; text-anchor: start" x="56.9664" y="748.5768" transform="rotate(-0 56.9664 748.5768)">Short 18 AWG power trunk; rated connectors. No motor power through Uno, USB, Vin, Dupont leads or breadboard.</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 681.12 527.6304
+C 678.188043 527.6304 675.373172 528.80243 673.299965 530.886435
+C 671.226758 532.97044 670.0608 535.799972 670.0608 538.7472
+C 670.0608 541.694428 671.226758 544.52396 673.299965 546.607965
+C 675.373172 548.69197 678.188043 549.864 681.12 549.864
+" clip-path="url(#pd9bde46b8d)" style="fill: none; stroke: #536575; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd9bde46b8d">
+   <rect x="24.48" y="7.92" width="1175.04" height="764.28"/>
+  </clipPath>
+ </defs>
+</svg>
