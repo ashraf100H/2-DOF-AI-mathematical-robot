@@ -8,7 +8,7 @@ from unittest.mock import patch
 import numpy as np
 
 from test_pickup_simulation import load_original_robot, CannedPredictor
-from hardware.python_serial_control import (DeviceProfile, SerialController,
+from python_serial_control import (DeviceProfile, SerialController,
                                              evaluate_target, validate_angles)
 from trajectory_planner import Workspace
 from pathlib import Path

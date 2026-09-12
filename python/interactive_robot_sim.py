@@ -1,6 +1,6 @@
 """Step 7: live Pygame controls for the existing frozen ANN robot.
 
-Run: python interactive_robot_sim.py
+Run: python python/interactive_robot_sim.py
 Rendering/events stay on the main thread. Model loading and bounded planning
 run on one worker, so a slow prediction never blocks the window's event loop.
 """
@@ -21,7 +21,7 @@ from trajectory_planner import (Scene, PlannerSettings, Workspace, JointTrajecto
                                 collision_reason, finite_pair, plan_motion, robot_points)
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 SCENE = Scene()  # Edit table, floor and box in Scene, in trajectory_planner.py.
 SETTINGS = PlannerSettings()
 START_ANGLES = np.array([90.0, 0.0])
@@ -158,7 +158,7 @@ class Simulator:
             traceback.print_exc()
             if not stale:
                 self.status = "ERROR"
-                self.message = f"{error}. Check the terminal; install requirements-sim.txt if needed."
+                self.message = f"{error}. Check the terminal; install requirements/requirements-sim.txt if needed."
 
     def update(self, seconds):
         self.poll_worker()

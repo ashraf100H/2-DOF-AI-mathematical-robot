@@ -4,16 +4,16 @@ Checked **12 September 2026**, against the completed Step 7 baseline `bb043f04da
 
 ## Python and frozen ANN
 
-The existing Python 3.11.5 ANN environment was reused, with TensorFlow 2.16.1 and the pinned `requirements-ann.txt` stack. The only added runtime dependency is **pySerial 3.5**, declared in `requirements-hardware.txt`.
+The existing Python 3.11.5 ANN environment was reused, with TensorFlow 2.16.1 and the pinned `requirements/requirements-ann.txt` stack. The only added runtime dependency is **pySerial 3.5**, declared in `requirements/requirements-hardware.txt`.
 
 ```sh
-python -m unittest discover -s tests -v
-python hardware/python_serial_control.py --target 10 10
+python -m unittest discover -s python -v
+python python/python_serial_control.py --target 10 10
 ```
 
 **33 tests passed**: 7 existing pickup tests, 14 existing planner tests, and 12 new hardware-bridge tests. The new tests use the original notebook robot class and a fake serial transport. They cover input/workspace rejection before inference, invalid ANN results, robot and hardware limits without clipping, nearby configuration jumps, FK error at the exact transmitted precision, controller-profile parsing, refusal to arm unverified calibration, acknowledgement/completion IDs, reset/error/partial replies, missing replies, heartbeat failure and incomplete writes. A failed reply leaves the last confirmed commanded state unchanged; session cleanup requests STOP.
 
-The offline command loaded the **real frozen ANN and saved scalers** through `robot_pipeline.py` and reported:
+The offline command loaded the **real frozen ANN and saved scalers** through `python/robot_pipeline.py` and reported:
 
 | Quantity | Result |
 |---|---|

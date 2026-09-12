@@ -48,19 +48,27 @@ The starter firmware ships **disarmed and calibration-locked**. Review the guide
 ## Project structure and datasets
 
 ```text
-forward_kinematics.ipynb       # Robot model, simulation, data generation, Steps 3.2–3.3
-ann_inverse_kinematics.ipynb   # Step 4: baseline ANN preparation, training, and diagnostics
-ann_ik_validation.ipynb      # Step 5: held-out test evaluation and manual target helpers
-simulated_box_pickup.ipynb   # Step 6: approach, attachment, lift, and honest failure demos
-robot_pipeline.py           # Load frozen ANN and existing notebook definitions
-pickup_simulation.py        # Pickup states and motion frames, separate from drawing
-interactive_robot_sim.py    # Step 7: Pygame input, dashboard, rendering and live motion
-trajectory_planner.py       # Step 7: workspace checks, collision checks and waypoint planning
-requirements-ann.txt         # Tested ANN environment (Python 3.11)
-requirements-sim.txt        # Existing ANN dependencies + Pygame 2.6.1
-requirements-hardware.txt   # Existing ANN dependencies + pySerial 3.5
+notebooks/                       # All Jupyter notebooks
+  forward_kinematics.ipynb        # Robot model, simulation, data generation, Steps 3.2–3.3
+  ann_inverse_kinematics.ipynb    # Step 4: ANN training and diagnostics
+  ann_ik_validation.ipynb        # Step 5: held-out evaluation and target helpers
+  simulated_box_pickup.ipynb     # Step 6: pickup and honest failure demos
+python/                          # All Python modules, entry points and tests
+  robot_pipeline.py             # Load frozen ANN and existing notebook definitions
+  pickup_simulation.py          # Pickup states and motion frames
+  interactive_robot_sim.py      # Step 7: Pygame input, dashboard and live motion
+  trajectory_planner.py         # Step 7: workspace, collision and waypoint checks
+  python_serial_control.py      # PC-to-Arduino bridge and offline ANN check
+  test_pickup_simulation.py      # Pickup state-transition tests
+  test_trajectory_planner.py     # Geometry, routing and speed-limit tests
+  test_hardware_bridge.py        # Serial protocol and hardware-limit tests
+  check_frozen_planner.py        # Optional real-ANN integration/regression check
+requirements/                    # All pip requirement sets
+  requirements-ann.txt          # Tested ANN environment (Python 3.11)
+  requirements-sim.txt          # ANN dependencies + Pygame 2.6.1
+  requirements-hardware.txt     # ANN dependencies + pySerial 3.5
 hardware_2d_robot_plan.md   # Practical build guide; hardware is not yet built
-hardware/                  # Python serial bridge, wiring, calibration, figures and checks
+hardware/                  # Wiring, calibration, diagrams and validation notes
 arduino/                   # Calibration-locked controller and loose-servo neutral test
 data/
   robot_configurations.csv    # Complete raw configuration-space dataset
@@ -82,11 +90,9 @@ simulation/
   interactive_simulator.png  # Step 7 live dashboard preview
   step7_checks.json          # Frozen-model planning examples and Step 6 regression results
   *.png                      # Static snapshots of pickup and failed pickup
-tests/
-  test_pickup_simulation.py  # State transitions checked with the original robot model
-  test_trajectory_planner.py # Geometry, route rejection, waypoint success and speed limits
-  check_frozen_planner.py    # Optional real-ANN integration and Step 6 regression check
 ```
+
+Run the commands below from the repository root. Each notebook's first code cell sets the working directory to the repository root and adds `python/` to its import path, so opening a kernel in either the root or `notebooks/` works. Run that setup cell before jumping to a later section. Saved notebook outputs and historical evaluation/simulation reports are preserved; their recorded source paths and hashes describe the layout at the original run.
 
 - **Raw dataset:** 65,311 rows, columns `theta1, theta2, x, y`. Preserve this ground-truth dataset for analysis and future configuration policies.
 - **IK training dataset:** 39,555 rows, columns `x, y, theta1, theta2`. Future ANN inputs are `[x, y]` (cm); outputs are `[theta1, theta2]` (degrees). No analysis helper columns are included.
@@ -137,19 +143,19 @@ The first scene was chosen before prediction. The reference scene was added afte
 
 ## Running the notebook
 
-Open the notebook with its working directory set to the repository root. It uses NumPy, Pandas, Matplotlib, IPython/Jupyter, and `ipympl` for interactive sliders.
+Open a notebook from `notebooks/` and run its first code cell to establish repository paths. It uses NumPy, Pandas, Matplotlib, IPython/Jupyter, and `ipympl` for interactive sliders.
 
 To rerun analysis without regenerating raw data, execute the NumPy, `RobotArm2DOF`, and `robot` definition cells, then Step 3.2 or Step 3.3. Step 3.3 reads the raw CSV and writes only `data/robot_ik_training.csv`. Earlier generation cells intentionally regenerate the raw CSV when run. Saved notebook outputs show the analysis without requiring the interactive backend.
 
-For ANN work, use a dedicated Python 3.11 environment, install `requirements-ann.txt`, select that environment's Jupyter kernel, and open `ann_inverse_kinematics.ipynb`. Section 4.8 shows how to load the model and scalers for predictions without retraining. Reuse `split_indices.npz` in Step 5 only after verifying the dataset SHA256 recorded in `training_metadata.json`; indices are zero-based data-row positions after the CSV header. Numerical history and software versions are saved with the model.
+For ANN work, use a dedicated Python 3.11 environment, install `requirements/requirements-ann.txt`, select that environment's Jupyter kernel, and open `notebooks/ann_inverse_kinematics.ipynb`. Section 4.8 shows how to load the model and scalers for predictions without retraining. Reuse `split_indices.npz` in Step 5 only after verifying the dataset SHA256 recorded in `training_metadata.json`; indices are zero-based data-row positions after the CSV header. Numerical history and software versions are saved with the model.
 
-Open `ann_ik_validation.ipynb` to reproduce the evaluation without retraining. It includes error distributions, workspace comparisons, worst cases, branch-proximity analysis, and `predict_angles(x, y)` / `evaluate_target(x, y)` helpers for targets in cm. The notebook reads all existing inputs and writes only the `evaluation/` reports.
+Open `notebooks/ann_ik_validation.ipynb` to reproduce the evaluation without retraining. It includes error distributions, workspace comparisons, worst cases, branch-proximity analysis, and `predict_angles(x, y)` / `evaluate_target(x, y)` helpers for targets in cm. The notebook reads all existing inputs and writes only the `evaluation/` reports.
 
-Open `simulated_box_pickup.ipynb` for Step 6; its setup reuses the original robot class and Step 5 prediction helper without running their notebooks. Change the scene constants to try a target and inspect its actual result. Saved GIFs and PNGs in `simulation/` can be viewed without TensorFlow. Run state-transition checks from the repository root with `python -m unittest discover -s tests -v`.
+Open `notebooks/simulated_box_pickup.ipynb` for Step 6; its setup reuses the original robot class and Step 5 prediction helper without running their notebooks. Change the scene constants to try a target and inspect its actual result. Saved GIFs and PNGs in `simulation/` can be viewed without TensorFlow. Run state-transition checks from the repository root with `python -m unittest discover -s python -v`.
 
 ## Step 7 — Interactive ANN simulator and trajectory planning
 
-Enter a Cartesian **X/Y target in centimeters** and press **MOVE TO TARGET**. The standalone Pygame application loads the existing input scaler, frozen ANN and output scaler through `robot_pipeline.py`. The original `RobotArm2DOF` still supplies every robot coordinate. The ANN, scalers, IK policy, datasets and Steps 1–6 are unchanged.
+Enter a Cartesian **X/Y target in centimeters** and press **MOVE TO TARGET**. The standalone Pygame application loads the existing input scaler, frozen ANN and output scaler through `python/robot_pipeline.py`. The original `RobotArm2DOF` still supplies every robot coordinate. The ANN, scalers, IK policy, datasets and Steps 1–6 are unchanged.
 
 **Inverse kinematics:** where should the joints end up? **Trajectory planning:** how should the robot move there safely from its current configuration? The ANN supplies target joint angles; the planner decides whether and how to move to those angles. There is no analytical IK fallback, angle clipping or retraining.
 
@@ -160,19 +166,19 @@ Enter a Cartesian **X/Y target in centimeters** and press **MOVE TO TARGET**. Th
 Use a Python 3.11 environment. From the repository root:
 
 ```sh
-python -m pip install -r requirements-sim.txt
-python interactive_robot_sim.py
+python -m pip install -r requirements/requirements-sim.txt
+python python/interactive_robot_sim.py
 ```
 
 For a new environment on Windows PowerShell, these commands avoid depending on activation scripts:
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-sim.txt
-.\.venv\Scripts\python.exe interactive_robot_sim.py
+.\.venv\Scripts\python.exe -m pip install -r requirements/requirements-sim.txt
+.\.venv\Scripts\python.exe python/interactive_robot_sim.py
 ```
 
-The earlier working ANN environment can also install `requirements-sim.txt` and run the application directly. No notebook execution or training is needed. Resource paths resolve relative to the application file. Loading and planning run on one worker; the Pygame window continues processing events while they finish.
+The earlier working ANN environment can also install `requirements/requirements-sim.txt` and run the application directly. No notebook execution or training is needed. Resource paths resolve relative to the application file. Loading and planning run on one worker; the Pygame window continues processing events while they finish.
 
 - Click an X/Y field to replace its value. **Tab** switches fields; **Ctrl+A** selects the whole value; **Backspace/Delete** removes text; **Enter** submits.
 - **MOVE TO TARGET** submits the typed coordinates. Clicking the grid submits that location through the same validation, ANN and planning pipeline.
@@ -184,7 +190,7 @@ The dashboard distinguishes the submitted target, ANN joint prediction, **predic
 
 ### Scene and validation
 
-Edit `Scene` and `PlannerSettings` in `trajectory_planner.py` to change the scene and thresholds:
+Edit `Scene` and `PlannerSettings` in `python/trajectory_planner.py` to change the scene and thresholds:
 
 | Setting | Default |
 |---|---|
@@ -228,8 +234,8 @@ Try these with the default scene:
 The detour's first two routes remain recorded as failures: ANN waypoint errors were **0.601 cm** and **0.557 cm**, respectively. The overhead candidate succeeds without changing the 0.5 cm threshold. The table location and overhead point were selected during engineering checks to provide a useful demonstration. These examples are not an unbiased ANN accuracy measurement.
 
 ```sh
-python -m unittest discover -s tests -v
-python tests/check_frozen_planner.py
+python -m unittest discover -s python -v
+python python/check_frozen_planner.py
 ```
 
 **21 unit tests passed**: the seven existing Step 6 tests plus 14 planner tests. Coverage includes direct acceptance, both-link and floor collisions, segment edge cases, an obstacle between clear sampled poses, waypoint success with dense trajectory checks, unreachable/bad input, invalid ANN results, excessive error, branch jumps, rejected goals, no partial failed routes, and continuous speed-limited motion. Tests reuse the original robot class; canned predictions isolate planning from TensorFlow.

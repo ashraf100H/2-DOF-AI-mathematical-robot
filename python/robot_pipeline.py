@@ -49,7 +49,7 @@ def load_robot_pipeline(repository_root="."):
     namespace = {"np": np, "pd": pd, "features": metadata["features"],
                  "input_scaler": input_scaler, "output_scaler": output_scaler,
                  "model": tf.keras.models.load_model(root / "models/ik_ann.keras", compile=False)}
-    exec(_notebook_definition(root / "forward_kinematics.ipynb", "RobotArm2DOF", ast.ClassDef), namespace)
+    exec(_notebook_definition(root / "notebooks/forward_kinematics.ipynb", "RobotArm2DOF", ast.ClassDef), namespace)
     robot = namespace["RobotArm2DOF"](10, 10)
-    exec(_notebook_definition(root / "ann_ik_validation.ipynb", "predict_angles", ast.FunctionDef), namespace)
+    exec(_notebook_definition(root / "notebooks/ann_ik_validation.ipynb", "predict_angles", ast.FunctionDef), namespace)
     return robot, namespace["predict_angles"]

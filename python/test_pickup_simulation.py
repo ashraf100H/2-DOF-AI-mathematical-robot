@@ -11,7 +11,7 @@ from pickup_simulation import simulate_pickup
 
 
 def load_original_robot():
-    path = Path(__file__).resolve().parents[1] / "forward_kinematics.ipynb"
+    path = Path(__file__).resolve().parents[1] / "notebooks/forward_kinematics.ipynb"
     notebook = json.loads(path.read_text(encoding="utf-8"))
     definitions = []
     for cell in notebook["cells"]:

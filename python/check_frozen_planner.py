@@ -1,6 +1,6 @@
 """Optional integration check with saved TensorFlow artifacts (no training).
 
-Run from the repository root: python tests/check_frozen_planner.py
+Run from the repository root: python python/check_frozen_planner.py
 Writes only simulation/step7_checks.json. Lightweight unit tests run separately.
 """
 
@@ -13,7 +13,7 @@ import sys
 os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
 os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "python"))
 
 import numpy as np
 
@@ -24,9 +24,9 @@ from trajectory_planner import (Scene, Workspace, JointTrajectory, plan_motion,
 
 
 def main():
-    protected = [*ROOT.glob("*.ipynb"), *(ROOT / "data").glob("*"),
+    protected = [*(ROOT / "notebooks").glob("*.ipynb"), *(ROOT / "data").glob("*"),
                  *(ROOT / "models").glob("*"), *(ROOT / "evaluation").glob("*"),
-                 ROOT / "robot_pipeline.py", ROOT / "pickup_simulation.py",
+                 ROOT / "python/robot_pipeline.py", ROOT / "python/pickup_simulation.py",
                  ROOT / "simulation/pickup_results.json"]
     hashes = {p.relative_to(ROOT).as_posix(): sha256(p.read_bytes()).hexdigest()
               for p in protected if p.is_file()}

@@ -1,7 +1,7 @@
 """Frozen ANN -> validated robot angles -> USB serial -> UNO servo controller.
 
-Offline: python hardware/python_serial_control.py --target 10 10
-Hardware: python hardware/python_serial_control.py --port COM3
+Offline: python python/python_serial_control.py --target 10 10
+Hardware: python python/python_serial_control.py --port COM3
 The first command never opens a serial port. Read the calibration guide before
 using hardware mode. DONE means commanded trajectory complete, not measured pose.
 """
@@ -17,7 +17,7 @@ import time
 os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
 os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "python"))
 
 import numpy as np
 

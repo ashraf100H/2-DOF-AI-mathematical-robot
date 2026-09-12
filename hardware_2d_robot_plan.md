@@ -8,7 +8,7 @@ Read this guide first, then use the detailed [wiring notes](hardware/wiring_note
 
 ## 1. What we are reusing
 
-The repository already contains the mathematical robot, a frozen **2→64→64→2 ANN with 4,482 parameters**, saved input/output scalers, held-out validation, a Pygame simulator and a geometric trajectory planner. `robot_pipeline.py` loads the original `RobotArm2DOF` and prediction helper directly from their notebooks. The hardware bridge reuses it without running training or rebuilding FK.
+The repository already contains the mathematical robot, a frozen **2→64→64→2 ANN with 4,482 parameters**, saved input/output scalers, held-out validation, a Pygame simulator and a geometric trajectory planner. `python/robot_pipeline.py` loads the original `RobotArm2DOF` and prediction helper directly from their notebooks. The hardware bridge reuses it without running training or rebuilding FK.
 
 The model assumes **L1 = L2 = 10 cm**, with theta1 counter-clockwise from +X and theta2 **relative to Link 1**. The full training limits are theta1 −90…180° and theta2 −120…120°. Real servos, brackets and cable routing will usually allow less motion. The starter hardware profile deliberately allows only **theta1 0…120°, theta2 0…110°**, subject to your measured calibration. This is an additional hardware acceptance limit; the dataset and IK policy are unchanged.
 
@@ -147,16 +147,16 @@ Use the [calibration checklist](hardware/calibration_checklist.md) to measure di
 
 | File | Purpose |
 |---|---|
-| [hardware/python_serial_control.py](hardware/python_serial_control.py) | Offline ANN checks and interactive USB control; reads physical limits from the controller |
+| [python/python_serial_control.py](python/python_serial_control.py) | Offline ANN checks and interactive USB control; reads physical limits from the controller |
 | [arduino/servo_controller/servo_controller.ino](arduino/servo_controller/servo_controller.ino) | Bounded command parser, per-axis calibration, limits, synchronized easing, heartbeat timeout and optional LCD |
 | [arduino/servo_neutral_test/servo_neutral_test.ino](arduino/servo_neutral_test/servo_neutral_test.ino) | One loose servo: neutral and small manual pulse adjustments |
-| [requirements-hardware.txt](requirements-hardware.txt) | Existing ANN dependencies plus pySerial 3.5 |
+| [requirements/requirements-hardware.txt](requirements/requirements-hardware.txt) | Existing ANN dependencies plus pySerial 3.5 |
 
 From the repository root in the working Python 3.11 ANN environment:
 
 ```sh
-python -m pip install -r requirements-hardware.txt
-python hardware/python_serial_control.py --target 10 10
+python -m pip install -r requirements/requirements-hardware.txt
+python python/python_serial_control.py --target 10 10
 ```
 
 This **offline command opens no serial port**. It displays predicted angles, the original FK endpoint and ANN error. Physical limits cannot be confirmed without the calibrated controller. Numeric values are rounded to 0.001° for the serial protocol and checked again before transmission.
@@ -167,7 +167,7 @@ After calibration and wiring, close Arduino Serial Monitor so Python can own the
 
 ```sh
 python -m serial.tools.list_ports
-python hardware/python_serial_control.py --port COM3
+python python/python_serial_control.py --port COM3
 ```
 
 Replace `COM3` with your controller's actual port. The bridge reads the controller profile, explains home alignment and waits for you to type `ARM`. Then enter `x y`, for example `10 10`. The special `angles 90 0` command is for deliberate calibration checks; normal XY control always uses the ANN. `quit`, `stop`, Ctrl+C or EOF ends the session and sends STOP. Use the physical power switch immediately if motion is wrong.
