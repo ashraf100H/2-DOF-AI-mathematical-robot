@@ -33,8 +33,8 @@ The notebook's validated `RobotArm2DOF.forward_kinematics()` is the source of tr
 | 4 — TensorFlow ANN training | ✅ Complete |
 | 5 — ANN inverse-kinematics validation | ✅ Complete |
 | 6 — Simulated box pickup | ✅ Complete |
-| 7 — Table + trajectory planning | Next, after Step 6 review |
-| 8 — Gripper / complete 2D pick-and-place | Planned |
+| 7 — Interactive ANN simulator + table + trajectory planning | ✅ Complete |
+| 8 — Gripper / complete 2D pick-and-place | NEXT, after Step 7 review |
 | Later — Physical hardware implementation | Planned |
 
 ## Project structure and datasets
@@ -46,7 +46,10 @@ ann_ik_validation.ipynb      # Step 5: held-out test evaluation and manual targe
 simulated_box_pickup.ipynb   # Step 6: approach, attachment, lift, and honest failure demos
 robot_pipeline.py           # Load frozen ANN and existing notebook definitions
 pickup_simulation.py        # Pickup states and motion frames, separate from drawing
+interactive_robot_sim.py    # Step 7: Pygame input, dashboard, rendering and live motion
+trajectory_planner.py       # Step 7: workspace checks, collision checks and waypoint planning
 requirements-ann.txt         # Tested ANN environment (Python 3.11)
+requirements-sim.txt        # Existing ANN dependencies + Pygame 2.6.1
 data/
   robot_configurations.csv    # Complete raw configuration-space dataset
   robot_ik_training.csv       # Deterministic IK samples for future ANN training
@@ -64,9 +67,13 @@ simulation/
   box_pickup.gif             # Successful reference pickup-and-lift animation
   first_attempt.gif          # First scene: attached, then lift rejected
   pickup_results.json        # All three scene outcomes and baseline hashes
+  interactive_simulator.png  # Step 7 live dashboard preview
+  step7_checks.json          # Frozen-model planning examples and Step 6 regression results
   *.png                      # Static snapshots of pickup and failed pickup
 tests/
   test_pickup_simulation.py  # State transitions checked with the original robot model
+  test_trajectory_planner.py # Geometry, route rejection, waypoint success and speed limits
+  check_frozen_planner.py    # Optional real-ANN integration and Step 6 regression check
 ```
 
 - **Raw dataset:** 65,311 rows, columns `theta1, theta2, x, y`. Preserve this ground-truth dataset for analysis and future configuration policies.
@@ -128,4 +135,93 @@ Open `ann_ik_validation.ipynb` to reproduce the evaluation without retraining. I
 
 Open `simulated_box_pickup.ipynb` for Step 6; its setup reuses the original robot class and Step 5 prediction helper without running their notebooks. Change the scene constants to try a target and inspect its actual result. Saved GIFs and PNGs in `simulation/` can be viewed without TensorFlow. Run state-transition checks from the repository root with `python -m unittest discover -s tests -v`.
 
-**Review Step 6 before continuing to table and trajectory planning.**
+## Step 7 — Interactive ANN simulator and trajectory planning
+
+Enter a Cartesian **X/Y target in centimeters** and press **MOVE TO TARGET**. The standalone Pygame application loads the existing input scaler, frozen ANN and output scaler through `robot_pipeline.py`. The original `RobotArm2DOF` still supplies every robot coordinate. The ANN, scalers, IK policy, datasets and Steps 1–6 are unchanged.
+
+**Inverse kinematics:** where should the joints end up? **Trajectory planning:** how should the robot move there safely from its current configuration? The ANN supplies target joint angles; the planner decides whether and how to move to those angles. There is no analytical IK fallback, angle clipping or retraining.
+
+![Interactive simulator showing a checked overhead route](simulation/interactive_simulator.png)
+
+### Run and controls
+
+Use a Python 3.11 environment. From the repository root:
+
+```sh
+python -m pip install -r requirements-sim.txt
+python interactive_robot_sim.py
+```
+
+For a new environment on Windows PowerShell, these commands avoid depending on activation scripts:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-sim.txt
+.\.venv\Scripts\python.exe interactive_robot_sim.py
+```
+
+The earlier working ANN environment can also install `requirements-sim.txt` and run the application directly. No notebook execution or training is needed. Resource paths resolve relative to the application file. Loading and planning run on one worker; the Pygame window continues processing events while they finish.
+
+- Click an X/Y field to replace its value. **Tab** switches fields; **Ctrl+A** selects the whole value; **Backspace/Delete** removes text; **Enter** submits.
+- **MOVE TO TARGET** submits the typed coordinates. Clicking the grid submits that location through the same validation, ANN and planning pipeline.
+- **TARGET BOX CENTER** submits the configured box center; clicking the box does the same.
+- **RESET** explicitly resets the simulation to `(90°, 0°)` and cancels pending motion. It is a scene reset, not a planned homing move. Stale worker results cannot move the reset robot.
+- **Esc** or the window close button exits. Target submission is disabled during loading, planning and motion; reset remains available.
+
+The dashboard distinguishes the submitted target, ANN joint prediction, **predicted endpoint error**, current joint state, actual hand position, **current target error**, planner mode and status. A rejected ANN prediction leaves the robot in its last accepted pose. The green preview follows the actual FK hand trajectory; small green rings show requested waypoints. Orange marks the target/tolerance and the static box.
+
+### Scene and validation
+
+Edit `Scene` and `PlannerSettings` in `trajectory_planner.py` to change the scene and thresholds:
+
+| Setting | Default |
+|---|---|
+| Solid rectangular table/obstacle | X = −18 to −12 cm; Y = −12 to 6 cm (6 cm wide, 18 cm high) |
+| Floor | Y = −12 cm |
+| Static box | Center (−14, 6.5) cm; side length 1 cm |
+| Target and waypoint ANN error limit | 0.5 cm |
+| Link/table/floor clearance | 0.15 cm |
+| Per-joint maximum speed | 45°/s |
+| Fixed simulation update | 120 Hz; rendering capped around 60 FPS |
+
+The first input screen rejects non-finite/non-numeric values, radii outside 10–20 cm, and targets farther than 0.27 cm from the raw dataset's sampled workspace. That neighborhood covers the maximum half-grid-cell displacement of the 1° samples, approximately 0.262 cm. This is an **approximate workspace screen near joint-limit boundaries**, not an exact continuous reachability proof. It uses only raw `(x,y)` positions, never dataset angles as replacement IK. The displayed 10/20 cm circles are radial guides, not the complete joint-limited workspace boundary.
+
+Targets in the table/floor clearance are rejected. For every ANN target or waypoint, the planner checks finite predicted angles, the original joint limits, FK reconstruction error and collision of the full robot pose. Each rejected candidate reports its reason. The simple box remains a selectable visual target; grasping, attachment, transport and release are reserved for Step 8.
+
+### Direct and waypoint planning
+
+1. **DIRECT PATH:** check the joint-space segment from the current angles to the ANN's goal angles. Accept it only if its whole motion clears the table/floor and passes the nearby-endpoint continuity check.
+2. If direct motion is rejected, try Cartesian up/over/approach routes at **Y = 14 cm**, then **Y = 17 cm**, with requested waypoints at most **2 cm** apart. Predict every waypoint using the same saved ANN.
+3. If those routes fail, try the single **overhead waypoint (0, 15) cm**, followed by the original target. This coarser route allows curved joint-interpolated hand paths around the central unreachable region. Every joint segment is still collision-checked.
+4. Accept only a complete validated route. Otherwise report **NO SAFE PATH** and leave the robot still. The finite waypoint policy is intentionally incomplete: rejection does not prove that every possible route is impossible.
+
+For neighboring requests/achieved endpoints within **3 cm**, a change above **60° in either joint** is rejected as a potential ANN branch jump. The wider overhead legs also have a **120° per-joint candidate-change limit**. Far direct goals can require substantial deliberate rotation; speed-limited continuous motion and collision checks still apply. These thresholds are conservative heuristics, not a cure for the learned IK discontinuity, and can reject valid motions near singular configurations. No angle wrapping silently changes the commanded route.
+
+Collision checking uses a line-segment/axis-aligned-rectangle intersection test for **both links**, including endpoint and edge contact. The floor check uses the lowest joint/endpoint height, which also bounds the straight links. For motion, joint intervals initially span at most 0.5°. At each midpoint, obstacles are expanded by the clearance plus a conservative bound on link displacement over half the interval: `(L1 + L2)*abs(delta_theta1) + L2*abs(delta_theta2)`, with these half-interval angles in radians. Ambiguous intervals are subdivided up to seven times, then rejected if still uncertified. This guards against obstacles between samples; it may reject very tight routes. It models geometric links and clearance, not rigid-body contact physics or self-collision.
+
+Accepted joint segments use cubic easing, with zero velocity at each waypoint. Duration is at least `1.5 * largest_joint_change / 45`, so the peak joint speed stays at or below 45°/s. A fixed timestep advances the robot while the [Pygame clock](https://www.pygame.org/docs/ref/time.html) controls rendering and the [event loop](https://www.pygame.org/docs/ref/event.html) keeps controls responsive. A long OS pause slows the simulation clock rather than skipping ahead; runtime pose checks stop at the last safe state if a collision is detected.
+
+### Review examples and checks
+
+Try these with the default scene:
+
+| Action | Recorded result |
+|---|---|
+| Reset, move to (10, 10) | Direct path; final error 0.148 cm |
+| Reset, move to (−10, 4), then (−14, 14) | Second direct path is table-blocked; overhead waypoint route succeeds with 0.370 cm final error |
+| Reset, select box center | Direct path; 0.087 cm error; box stays on the table |
+| Move to (10, −10) | ANN endpoint error 5.749 cm; rejected before motion |
+| Move to (21, 0) / (−15, 0) | Unreachable / target inside table |
+
+The detour's first two routes remain recorded as failures: ANN waypoint errors were **0.601 cm** and **0.557 cm**, respectively. The overhead candidate succeeds without changing the 0.5 cm threshold. The table location and overhead point were selected during engineering checks to provide a useful demonstration. These examples are not an unbiased ANN accuracy measurement.
+
+```sh
+python -m unittest discover -s tests -v
+python tests/check_frozen_planner.py
+```
+
+**21 unit tests passed**: the seven existing Step 6 tests plus 14 planner tests. Coverage includes direct acceptance, both-link and floor collisions, segment edge cases, an obstacle between clear sampled poses, waypoint success with dense trajectory checks, unreachable/bad input, invalid ANN results, excessive error, branch jumps, rejected goals, no partial failed routes, and continuous speed-limited motion. Tests reuse the original robot class; canned predictions isolate planning from TensorFlow.
+
+The optional integration command uses the **real frozen ANN** for seven planning cases and reproduces all three original Step 6 outcomes. It checks 2,001 poses per accepted example, verifies input hashes and writes `simulation/step7_checks.json`. A development smoke run also exercised typed/mouse/box controls, invalid inputs, resets during planning/motion, and matching motion states at 30/60/120 Hz render cadences using SDL's headless video driver. Saved Pygame frames were visually inspected; perceived smoothness on your display still needs your review.
+
+**Review the interactive Step 7 simulator before starting Step 8 — gripper and complete 2D pick-and-place.**

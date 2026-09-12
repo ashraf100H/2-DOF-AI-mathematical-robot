@@ -1,0 +1,3 @@
+# Standalone Step 7 simulator; reuse the tested frozen ANN environment.
+-r requirements-ann.txt
+pygame==2.6.1

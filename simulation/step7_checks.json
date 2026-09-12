@@ -1,0 +1,250 @@
+{
+  "scene_cm": {
+    "table": {
+      "xmin": -18.0,
+      "xmax": -12.0,
+      "ymin": -12.0,
+      "ymax": 6.0
+    },
+    "floor_y": -12.0,
+    "box_xy": [
+      -14.0,
+      6.5
+    ]
+  },
+  "examples": [
+    {
+      "case": "direct",
+      "target_cm": [
+        10,
+        10
+      ],
+      "start_angles_deg": [
+        90,
+        0
+      ],
+      "status": "ready",
+      "mode": "DIRECT PATH",
+      "error_cm": 0.14809698774937322,
+      "predicted_angles_deg": [
+        0.5062378644943237,
+        90.17552185058594
+      ],
+      "direct_reason": "",
+      "attempts": [],
+      "message": "Direct joint path passed collision and continuity checks.",
+      "duration_seconds": 3.0058507283528644,
+      "nodes_deg": [
+        [
+          90.0,
+          0.0
+        ],
+        [
+          0.5062378644943237,
+          90.17552185058594
+        ]
+      ],
+      "waypoints_cm": []
+    },
+    {
+      "case": "detour_start",
+      "target_cm": [
+        -10,
+        4
+      ],
+      "start_angles_deg": [
+        90,
+        0
+      ],
+      "status": "ready",
+      "mode": "DIRECT PATH",
+      "error_cm": 0.15114056823636848,
+      "predicted_angles_deg": [
+        99.83238983154297,
+        115.27679443359375
+      ],
+      "direct_reason": "",
+      "attempts": [],
+      "message": "Direct joint path passed collision and continuity checks.",
+      "duration_seconds": 3.842559814453125,
+      "nodes_deg": [
+        [
+          90.0,
+          0.0
+        ],
+        [
+          99.83238983154297,
+          115.27679443359375
+        ]
+      ],
+      "waypoints_cm": []
+    },
+    {
+      "case": "waypoint",
+      "target_cm": [
+        -14,
+        14
+      ],
+      "start_angles_deg": [
+        99.83238983154297,
+        115.27679443359375
+      ],
+      "status": "ready",
+      "mode": "WAYPOINT PATH",
+      "error_cm": 0.3696890642446594,
+      "predicted_angles_deg": [
+        128.0044708251953,
+        16.130504608154297
+      ],
+      "direct_reason": "Link 2 intersects the table clearance.",
+      "attempts": [
+        "Clearance y=14 cm: Waypoint (-9.9, 6.1): ANN endpoint error 0.601 cm exceeds 0.50 cm.",
+        "Clearance y=17 cm: Waypoint (-9.9, 5.9): ANN endpoint error 0.557 cm exceeds 0.50 cm.",
+        "Overhead waypoint: accepted"
+      ],
+      "message": "Direct path rejected. Overhead waypoint accepted after checking every segment.",
+      "duration_seconds": 4.240111287434896,
+      "nodes_deg": [
+        [
+          99.83238983154297,
+          115.27679443359375
+        ],
+        [
+          50.3167610168457,
+          82.0775146484375
+        ],
+        [
+          128.0044708251953,
+          16.130504608154297
+        ]
+      ],
+      "waypoints_cm": [
+        [
+          0.0,
+          15.0
+        ],
+        [
+          -14.0,
+          14.0
+        ]
+      ]
+    },
+    {
+      "case": "box",
+      "target_cm": [
+        -14.0,
+        6.5
+      ],
+      "start_angles_deg": [
+        90,
+        0
+      ],
+      "status": "ready",
+      "mode": "DIRECT PATH",
+      "error_cm": 0.0868672689220627,
+      "predicted_angles_deg": [
+        116.08877563476562,
+        78.23834991455078
+      ],
+      "direct_reason": "",
+      "attempts": [],
+      "message": "Direct joint path passed collision and continuity checks.",
+      "duration_seconds": 2.6079449971516926,
+      "nodes_deg": [
+        [
+          90.0,
+          0.0
+        ],
+        [
+          116.08877563476562,
+          78.23834991455078
+        ]
+      ],
+      "waypoints_cm": []
+    },
+    {
+      "case": "ann_error",
+      "target_cm": [
+        10,
+        -10
+      ],
+      "start_angles_deg": [
+        90,
+        0
+      ],
+      "status": "ann_error",
+      "mode": "--",
+      "error_cm": 5.749235983012067,
+      "predicted_angles_deg": [
+        -33.32872009277344,
+        -16.286855697631836
+      ],
+      "direct_reason": "",
+      "attempts": [],
+      "message": "ANN endpoint error 5.749 cm exceeds 0.50 cm."
+    },
+    {
+      "case": "unreachable",
+      "target_cm": [
+        21,
+        0
+      ],
+      "start_angles_deg": [
+        90,
+        0
+      ],
+      "status": "unreachable",
+      "mode": "--",
+      "error_cm": null,
+      "predicted_angles_deg": null,
+      "direct_reason": "",
+      "attempts": [],
+      "message": "Outside the joint-limited workspace screen."
+    },
+    {
+      "case": "collision",
+      "target_cm": [
+        -15,
+        0
+      ],
+      "start_angles_deg": [
+        90,
+        0
+      ],
+      "status": "collision",
+      "mode": "--",
+      "error_cm": null,
+      "predicted_angles_deg": null,
+      "direct_reason": "",
+      "attempts": [],
+      "message": "Target is inside the table/floor clearance."
+    }
+  ],
+  "step6_regression": {
+    "first_attempt": "lift_rejected",
+    "reference_demo": "success",
+    "known_failure_demo": "pickup_missed"
+  },
+  "source_sha256": {
+    "ann_ik_validation.ipynb": "67ee9e942cc69adf503ecbfa36e8ed58b00d790c12dfdacd86680e53ac91e398",
+    "ann_inverse_kinematics.ipynb": "1efc77f4ebdbfc33b2ddf3fcff3438203420291bf7670c784b1054b93a237aba",
+    "forward_kinematics.ipynb": "b65e8f59477322184e1d0cf76ccab8b991dac6a22da8cc80e0a8c7543f90fffc",
+    "simulated_box_pickup.ipynb": "2b3e1f6a873943518c1387b8015346119cff4ce29b5e02a8d1598248ec2012a2",
+    "data/robot_configurations.csv": "b41e149a9ad8e5ae996b8e7d659127f1d082c1d775cfc329e941619defb6d5b3",
+    "data/robot_ik_training.csv": "945b7d0bbc15d2c0970778609d7e9c14e2dda33f9edb4adb0de183433d1499cf",
+    "models/ik_ann.keras": "98b5b78a26c3c10447c098f43363973d9694a447d692cb2b5ec8c49a366e4f37",
+    "models/input_scaler.joblib": "7436b687cf879e8ecd7b8bf561b98ff767dcb64a1ac1a13468fc445e83e8e6bc",
+    "models/output_scaler.joblib": "7dc13339bca9ed356829d1c0f8e4cb4365abcaf53d8227e0595e4aa7004c023b",
+    "models/split_indices.npz": "30daeb1bb5f179261163040e26bf923a75df3665b9afdc49444b18aca097a767",
+    "models/training_history.csv": "6f85006549ba063ae1bbfa04f39803620c87659ddc6c41de1466c0e0b68cf9c2",
+    "models/training_metadata.json": "e55747b45f27231cccacd030c413028ddcd332aea36c4c81391878e265fd0040",
+    "evaluation/summary.json": "b0b8fb56bb1bdb6ba94488d450645d4a0c0c23b66f3a4f15d71dab6d4b6de9d2",
+    "evaluation/test_predictions.csv": "cacdf1bf19a157657fbd9c2924c3f80674cf4fc8d8eea614ca237df0077f46cc",
+    "robot_pipeline.py": "899ae29d48c3f0f698737e00f56dec3bc67f7fba9e1c9507e1c26b49e9f4b9e0",
+    "pickup_simulation.py": "416fb42c09925610a0e9ceaf7d96d4aa59519d043a121d0c7a43d566d9779647",
+    "simulation/pickup_results.json": "550b58c6c13bd78849f73f2b2373bc4dfc9cff8ca93f536f0503181d51aeec6a"
+  },
+  "selection": "Selected engineering examples, not a model accuracy estimate. The overhead (0,15) waypoint and outer-left table were selected during integration; rejected route attempts remain visible.",
+  "model_retrained": false,
+  "ik_policy_changed": false
+}
